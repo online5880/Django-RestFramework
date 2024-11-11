@@ -9,3 +9,12 @@ class Student(models.Model):
 
     def __str__(self):
         return self.id+self.name+self.score
+    
+class Passenger(models.Model):
+    firstName = models.CharField(max_length=20)
+    lastName = models.CharField(max_length=20)
+    travelPoints = models.DecimalField(max_digits=10,decimal_places=2)
+    
+    def __str__(self):
+        return self.firstName
+    

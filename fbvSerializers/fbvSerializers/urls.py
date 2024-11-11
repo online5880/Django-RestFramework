@@ -21,5 +21,7 @@ from fbvApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('students/',views.student_list),
-    path("students/<int:pk>",views.student_detail)
+    path("students/<int:pk>",views.student_detail),
+    path('passengers/',views.passenger_list),
+    path("passengers/<int:pk>",views.passenger_detail)
 ]
