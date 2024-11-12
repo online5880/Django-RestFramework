@@ -6,32 +6,49 @@ from rest_framework import status
 from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework import generics, mixins
+from rest_framework import viewsets
 
-
-class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+class StudentViewsSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+
+## Generic
+# class StudentList(generics.ListCreateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
     
-    def get(self, request):
-        return self.list(request)
+# class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+
+## Mixins
+# class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
     
-    def post(self, request):
-        return self.create(request)
+#     def get(self, request):
+#         return self.list(request)
     
-class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,generics.GenericAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+#     def post(self, request):
+#         return self.create(request)
     
-    def get(self, request, pk):
-        return self.retrieve(request,pk)
+# class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
     
-    def put(self, request, pk):
-        return self.update(request,pk)
+#     def get(self, request, pk):
+#         return self.retrieve(request,pk)
     
-    def delete(self, request, pk):
-        return self.destroy(request,pk)
+#     def put(self, request, pk):
+#         return self.update(request,pk)
+    
+#     def delete(self, request, pk):
+#         return self.destroy(request,pk)
 # Create your views here.
 
+
+## CBV
 # class StudentList(APIView):
     
 #     def get(self, request):
