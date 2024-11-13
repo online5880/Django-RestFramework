@@ -19,7 +19,8 @@ class StudentViewsSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     pagination_class = LimitOffsetPagination
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = ['name','score']
     search_fields = ['=id','=name']
 
 ## Generic
